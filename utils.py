@@ -4,7 +4,10 @@ import json
 import time
 import ast
 
-client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+
+key = "" #enter your api key here
+
+client = OpenAI(api_key=key)
 assistant = client.beta.assistants.retrieve(assistant_id='asst_HBm9X29io6tMuiphtvQeTuyh')
 thread = client.beta.threads.create()
 ASSISTANT_ID = assistant.id
@@ -18,7 +21,7 @@ def speech_to_text_german(api_key, audio_file_path):
     returns:
     str: text of the audio file
     '''
-    client = OpenAI(api_key=api_key)
+    # client = OpenAI(api_key=api_key)
     audio_file= open(audio_file_path, "rb")
     translation = client.audio.transcriptions.create(
         model="whisper-1", 
@@ -36,7 +39,7 @@ def text_to_speech_german(api_key, text, return_audio_file_path):
     returns:
     str: path to the audio file
     '''
-    client = OpenAI(api_key=api_key)
+    # client = OpenAI(api_key=api_key)
     response = client.audio.speech.create(
          model="tts-1",
         voice="alloy",
@@ -97,13 +100,13 @@ def check_response(client,thread,run):
     run = wait_on_run(client,run, thread)
     return get_response(client,thread)
 
-if __name__ == "__main__":
-    run = submit_message(client,ASSISTANT_ID, thread, "Can you connect me to the city department?")
-    run = wait_on_run(client,run, thread)
-    if run.status == 'requires_action':
-        response = pretty_print(check_response(client,thread,run))
-        print(response)
-    else:
-        response = pretty_print(get_response(client,thread))
-        print(response)
+# if __name__ == "__main__":
+#     run = submit_message(client,ASSISTANT_ID, thread, "Can you connect me to the city department?")
+#     run = wait_on_run(client,run, thread)
+#     if run.status == 'requires_action':
+#         response = pretty_print(check_response(client,thread,run))
+#         print(response)
+#     else:
+#         response = pretty_print(get_response(client,thread))
+#         print(response)
     
