@@ -19,13 +19,14 @@ def transcribe():
     print(thread.id)  # You can store this ID or log it as needed
 
     if not request.cookies.get('convo'):
-        twiml.say("Hey! what can I assist you with today?", voice='Polly.Joanna-Neural')
+        twiml.say("Hallo! Ich bin Polly, ein Chatbot, der mit Twilio und ChatGPT erstellt wurde. Worüber möchten Sie heute sprechen?", voice='Polly.Joanna-Neural')
 
     gather = twiml.gather(
         speech_timeout='auto',
         speech_model='experimental_conversations',
         input='speech',
-        action=f'/respond?threadId={thread.id}'
+        action=f'/respond?threadId={thread.id}',
+        language = 'de-DE'
     )
 
     response = make_response(str(twiml))
