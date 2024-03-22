@@ -22,7 +22,7 @@ Our codebase is available in this repository, along with instructions for deploy
 #### To deploy local python webhook:
 ```cd Twillio Deployment/local-python``` <br>
 ```flask run &```<br>
-```ngrok http 5000```
+```ngrok http 5000```<br>
 Use this webhook with your twilio deployment.
 
 #### To run streamlit playground:
@@ -31,7 +31,7 @@ Use this webhook with your twilio deployment.
 #### To deploy serverless:
 ```cd Twillio Deployment/serverless-twilio```<br>
 ```twilio serverless:deploy```<br>
-```twilio phone-numbers:update –voice-url={transcribe URL}```
+```twilio phone-numbers:update –voice-url={transcribe URL}```<br>
 
 ## Contributing
 
