@@ -19,6 +19,20 @@ In this project, we have developed an automated voicebot that leverages scraped 
 
 Our codebase is available in this repository, along with instructions for deploying and running the automated chatbot system. Feel free to explore the code and adapt it to your own projects.
 
+#### To deploy local python webhook:
+```cd Twillio Deployment/local-python``` <br>
+```flask run &```<br>
+```ngrok http 5000```
+Use this webhook with your twilio deployment.
+
+#### To run streamlit playground:
+```streamlit run app.py```
+
+#### To deploy serverless:
+```cd Twillio Deployment/serverless-twilio```<br>
+```twilio serverless:deploy```<br>
+```twilio phone-numbers:update –voice-url={transcribe URL}```
+
 ## Contributing
 
 We welcome contributions from the community to improve and extend the functionality of our automated chatbot project.
